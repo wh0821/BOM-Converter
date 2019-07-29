@@ -11,7 +11,7 @@ import csv
 #Date: July 10th
 
 
-with open('bom2.csv') as csvfile:
+with open('bom1.csv') as csvfile:
     read = csv.reader(csvfile, delimiter=',') #Separates all values by commas
     data = [] #initialies Array
     num = 1 #initializes integer variable
@@ -22,17 +22,17 @@ with open('bom2.csv') as csvfile:
             num = 2
         if num == 2:
             data.append(row)
-    temp = 0 #initializes integer variable
-    while data[0] is not "Res Def" and data[1] is not "Item Number": #When "Res Def" and "Item Number" are
+    temp = 0 #initializes integer variableW
+    while data[0][0] != "Item Number" or data[0][1] !="Ref Des": #When "Ref Des" or "Item Number" are
                                                                      #not the only headers, that header
                                                                      #is removed.
      for i in data[0]: #Select that element in the first row of the array (the header)
-                       #if that is not "Res Def" or "Item Number"
+                       #if that is not "Ref Des" and not "Item Number"
                        #That number is stored to be used
-         if "Res Def" not in i or "Item Number" not in i:
+         if "Ref Des" not in i and "Item Number" not in i:
              temp = data[0].index(i)
-     for x in data: #Removes the entire column that was indicated previously to not be "Res Def" or "Item Number"
-         del x[temp]
+             for x in data: #Removes the entire column that was indicated previously to not be "Ref Des" or "Item Number"
+                 del x[temp]
     txtfile = open("converted bom", "w+") #Creates a file named "converted bom"
     for x in data:#Since the part number are either separate by common (ie. G12,G29) or if there a multiple in a 
                   #row, done through a hyphen (G12-G29), the array element that has the part numbers will be converted
