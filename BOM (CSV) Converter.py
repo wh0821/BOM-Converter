@@ -3,7 +3,7 @@ import csv
 #CSV format converter used to convert bill of materials in CSV format 
 #to workable txt format where it lists all the parts and their respective
 #items that they are related to. It also removes all other irrelevant
-#information which are not neede when viewing an parts list
+#information which are not needed when viewing an parts list
 
 #CSV Converter
 #Version 1.0
